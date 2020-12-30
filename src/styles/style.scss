@@ -1,0 +1,114 @@
+html{
+    margin-top: 50px;
+    margin-left: 30px;;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+  
+  td, th {
+    border: 3px solid #ffffff;
+    text-align: left;
+    padding: 0px;
+    background-color: rgba(214, 211, 211, 0.24);
+    box-shadow: 2px #888888;
+  }
+  input{
+      width:100%;
+      border: none;
+      background-color: rgba(214, 211, 211, 0.185);
+      padding: 15px 15px 5px 15px;
+      box-sizing: border-box;
+  }
+ 
+
+  #ThingsTodo{
+      width:100rem
+  }
+  
+ /* Clear floats after the columns */
+ .row:after {
+    content: "";
+    display: table;
+    clear: both;
+ }
+ /* Style the buttons */
+ button {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+ }
+ button:hover {
+    background-color: #ddd;
+ }
+ button.active {
+    background-color: #666;
+    color: white;
+ }
+
+
+// $background: #8d1b1b;
+// $lfs-blue: #006ac6;
+// $lfs-yellow: #fab700;
+// $lfs-grey: #75787b;
+// body {
+//     background-color: $background;
+// }
+
+// .table-latitude {
+//     width: 100%;
+//     caption {
+//         text-transform: uppercase;
+//         font-weight: bold;
+//         color: $lfs-yellow;
+//         text-align: center;
+//     }
+//     thead {
+//         border-top: 2px solid $lfs-yellow;
+//         border-bottom: 2px solid $lfs-yellow;
+//         th {
+//             text-transform: uppercase;
+//             text-align: center;
+//             padding: 10px;
+//             color: $lfs-blue;
+//             border: 1px solid #F1F1F1;
+//         }
+//     }
+//     tbody {
+//         tr {
+//             border-bottom: 1px solid #F1F1F1;
+//             color: $lfs-grey;
+//             td {
+//                 padding: 10px;
+//                 border: 1px solid #F1F1F1;
+//             }
+//             th {
+//                 padding-left: 10px;
+//                 border: 1px solid #F1F1F1;
+//             }
+//         }
+//     }
+//     tfoot {
+//         color: $lfs-yellow;
+//         font-style: italic;
+//         border-bottom: 2px solid $lfs-yellow;
+//         tr {
+//             td {
+//                 padding: 10px;
+//                 border: 1px solid #F1F1F1;
+//             }
+//         }
+//     }
+// }
+// *{
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+
