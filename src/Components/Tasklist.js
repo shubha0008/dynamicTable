@@ -38,7 +38,7 @@ return (
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <td style={{backgroundColor:"skyblue"}}> </td>
 <td>
-<input type="text" name="ThingsTodo" data-id={idx} id={ThingsTodo} className="form-control " />
+<input type="text" name="ThingsTodo" data-id={idx,console.log(idx) } id={ThingsTodo} className="form-control " />
 </td>
 
 <td>
@@ -49,21 +49,22 @@ return (
 <input
   list="Status"
   name="Status"
-  id="input"
+  id="inputStatus"
   autocomplete="off"
+  data-id={idx}
   onFocus = { () => {
-    document.getElementsByTagName("datalist")[idx].style.display = 'flex';
+    document.getElementById("Status")[idx].style.display = 'flex';
     
-        for (var option of document.getElementsByTagName("datalist")[idx].options) {
+        for (var option of document.getElementById("Status")[idx].options) {
             option.onclick = function () {
-                document.getElementById("input").value = this.value;
+                document.getElementById("inputStatus").value = this.value;
                 //document.getElementById("input").backgroundColor = this.backgroundColor;
             }
         }
     }}
   
 ></input>
-<datalist name="Status" id={Status} data-id={idx} className="form-control" onMouseLeave = { () => {document.getElementsByTagName("datalist")[idx].style.display = 'none';}} >
+<datalist name="Status" id={Status}  className="form-control" onMouseLeave = {() => {document.getElementsByTagName("datalist").style.display = 'none';}} >
   <div className="flex-container" style={{display:"flex",flexDirection:"column"}}>
      <option value="Working on it"  style={{ backgroundColor:"yellow"}}>Working on it</option>
      <option value="Stuck"  style={{ backgroundColor:"red"}}>Stuck</option>
