@@ -1,34 +1,10 @@
-import React from "react"
+import React,{useState} from "react"
 import  "../styles/style.css";
-
+import Modal from'react-modal'
 
 const TaskList = (props) => {
     
-    // const handleFocus = () =>
-    // {
-    //     let n = 0;
-    //     document.getElementsByTagName("datalist")[n].style.display = 'flex';
-        
-       
-    //         for (var option of document.getElementsByTagName("datalist")[n].options) {
-    //             option.onclick = function () {
-    //                 document.getElementById("input").value = this.value;
-    //                 document.getElementById("input").backgroundColor = this.backgroundColor;
-    //             }
-    //             console.log(n)
-    //             n++;
-    //         }
-    //         n++;
-        
-    // }
-     
-    // const removeFocus = () =>{
-    //     document.getElementsByTagName("datalist")[0].style.display = 'none';
-        
-        
-    // }
-    
-
+  const [modalIsOpen , setModalIsOpen] = useState(false)
 
 return (
 props.taskList.map((val, idx) => {
@@ -51,21 +27,41 @@ return (
   name="Status"
   id="input"
   autocomplete="off"
-  onFocus = { () => {
-    document.getElementsByTagName("datalist")[idx].style.display = 'flex';
-    
-        for (var option of document.getElementsByTagName("datalist")[idx].options) {
-            option.onclick = function () {
-                document.getElementById("input").value = this.value;
-                //document.getElementById("input").backgroundColor = this.backgroundColor;
-            }
-        }
-    }}
+  onFocus = { () => setModalIsOpen(true)}
   
 ></input>
-<datalist name="Status" id={Status} data-id={idx} className="form-control" onMouseLeave = { () => {document.getElementsByTagName("datalist")[idx].style.display = 'none';}} >
-  <div className="flex-container" style={{display:"flex",flexDirection:"column"}}>
-     <option value="Working on it"  style={{ backgroundColor:"yellow"}}>Working on it</option>
+
+<Modal isOpen={modalIsOpen} shouldCloseOnEsc={true} shouldCloseOnOverlayClick={true} 
+onRequestClose={()=>setModalIsOpen(false)}
+style={{
+  overlay: {
+    position: 'fixed',
+    top: '40px',
+    left: '400px',
+    right: '600px',
+    bottom: '400px',
+    backgroundColor: 'rgba(255, 255, 255, 0.75)',
+    padding:'40px'
+  },
+  content: {
+    position: 'absolute',
+    top: '40px',
+    left: '40px',
+    right: '40px',
+    bottom: '40px',
+    border: '1px solid #ccc',
+    background: '#fff',
+    overflow: 'auto',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '4px',
+    outline: 'none',
+    margin:'20px',
+    padding:'10px'
+  }
+}}>
+<div className="flex-container" style={{display:"flex",margin:'20px'}} onMouseLeave={()=>setModalIsOpen(false)}>
+<div >
+     <option value="Working on it"  style={{ backgroundColor:"yellow"}} >Working on it</option>
      <option value="Stuck"  style={{ backgroundColor:"red"}}>Stuck</option>
      <option value="Critical" style={{ backgroundColor:"purple"}}>Critical</option>
   </div>
@@ -73,8 +69,9 @@ return (
     <option value="Waiting for review" style={{ backgroundColor:"pink"}}>Waiting for review</option>
     <option value="Done" style={{ backgroundColor:"green"}}>Done</option>
   </div>
-  
-</datalist>
+  </div>
+  <button >Close</button>
+</Modal>
 
 
 </td>
