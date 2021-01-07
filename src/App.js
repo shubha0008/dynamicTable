@@ -83,15 +83,15 @@ clickOnDelete(record) {
            <th className="handle" > 
            <button onMouseEnter={this.showModal} id = "columnOptions">  + </button>
            
-<Modal isOpen={this.show} shouldCloseOnEsc={false} 
+<Modal isOpen={this.state.show} shouldCloseOnEsc={false} 
 shouldCloseOnOverlayClick={true} 
 onRequestClose={this.hideModal}
 style={{
   overlay: {
     position: 'fixed',
-    top: '40px',
-    left: '410px',
-    right: '750px',
+    top: '100px',
+    left: '1200px',
+    right: '40px',
     bottom: '400px',
     backgroundColor: 'grey',
     padding:'10px',
@@ -113,7 +113,7 @@ style={{
     padding:'5px'
   }
 }}>
-<div className="flex-container" style={{display:"flex",margin:'20px'}} >
+<div>
                     <option value="Status">Status</option>
                     <option value="People">People</option>
                     <option value="Timeline">Timeline</option>
