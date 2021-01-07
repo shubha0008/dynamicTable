@@ -5,7 +5,12 @@ import Modal from'react-modal'
 const TaskList = (props) => {
     
   const [modalIsOpen , setModalIsOpen] = useState(false)
+  const [Status,setStatus] = useState(" ")
 
+  const handleClick = (e) => {
+    setStatus(e.target.value)
+
+  }
 return (
 props.taskList.map((val, idx) => {
 let ThingsTodo = `ThingsTodo-${idx}`, Owner = `Owner-${idx}`, Status = `Status-${idx}`, DueDate = `DueDate-${idx}`,Priority = `Priority-${idx}` ,MyStatus = `MyStatus-${idx}` 
@@ -27,53 +32,53 @@ return (
   name="Status"
   id="input"
   autocomplete="off"
-  onFocus = { () => setModalIsOpen(true)}
-  
+  onMouseEnter = { () => setModalIsOpen(true)}
+  value={Status}
 ></input>
 
-<Modal isOpen={modalIsOpen} shouldCloseOnEsc={true} shouldCloseOnOverlayClick={true} 
+<Modal isOpen={modalIsOpen} shouldCloseOnEsc={false} 
+shouldCloseOnOverlayClick={true} 
 onRequestClose={()=>setModalIsOpen(false)}
 style={{
   overlay: {
     position: 'fixed',
     top: '40px',
-    left: '400px',
-    right: '600px',
+    left: '410px',
+    right: '750px',
     bottom: '400px',
-    backgroundColor: 'rgba(255, 255, 255, 0.75)',
-    padding:'40px'
+    backgroundColor: 'grey',
+    padding:'10px',
+    margin:'10px'
   },
   content: {
     position: 'absolute',
-    top: '40px',
-    left: '40px',
-    right: '40px',
-    bottom: '40px',
+    top: '10px',
+    left: '10px',
+    right: '10px',
+    bottom: '10px',
     border: '1px solid #ccc',
     background: '#fff',
     overflow: 'auto',
     WebkitOverflowScrolling: 'touch',
     borderRadius: '4px',
     outline: 'none',
-    margin:'20px',
-    padding:'10px'
+    margin:'5px',
+    padding:'5px'
   }
 }}>
-<div className="flex-container" style={{display:"flex",margin:'20px'}} onMouseLeave={()=>setModalIsOpen(false)}>
+<div className="flex-container" style={{display:"flex",margin:'20px'}} >
 <div >
-     <option value="Working on it"  style={{ backgroundColor:"yellow"}} >Working on it</option>
-     <option value="Stuck"  style={{ backgroundColor:"red"}}>Stuck</option>
-     <option value="Critical" style={{ backgroundColor:"purple"}}>Critical</option>
+     <option value="Working on it"  style={{ backgroundColor:"yellow",margin:'10px'}} onClick={handleClick} >Working on it</option>
+     <option value="Stuck"  style={{ backgroundColor:"red",margin:'10px'}} onClick={handleClick} >Stuck</option>
+     <option value="Critical" style={{ backgroundColor:"purple",margin:'10px'}} onClick={handleClick} >Critical</option>
   </div>
   <div className="flex-container" style={{display:"flex",flexDirection:"column"}}>
-    <option value="Waiting for review" style={{ backgroundColor:"pink"}}>Waiting for review</option>
-    <option value="Done" style={{ backgroundColor:"green"}}>Done</option>
+    <option value="Waiting for review" style={{ backgroundColor:"pink",margin:'10px'}} onClick={handleClick} >Waiting for review</option>
+    <option value="Done" style={{ backgroundColor:"green",margin:'10px'}} onClick={handleClick} >Done</option>
   </div>
   </div>
-  <button >Close</button>
+  
 </Modal>
-
-
 </td>
 
 <td>

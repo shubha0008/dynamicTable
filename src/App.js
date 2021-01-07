@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Modal from 'react-modal'
 import Draggable from 'react-draggable';
 import  "./styles/style.scss";
 import TaskList from "./Components/Tasklist"
@@ -9,9 +9,24 @@ import TaskList from "./Components/Tasklist"
  
 class App extends React.Component {
  
-  state = {
-    taskList: [{ index: Math.random(), ThingsTodo: "", Owner: "", Status: "", DueDate: "" ,Priority:"",MyStatus:"" }],
+  constructor() {
+    super();
+    this.state = {
+      taskList: [{ index: Math.random(), ThingsTodo: "", Owner: "", Status: "", DueDate: "" ,Priority:"",MyStatus:"" }],
+      show: false
+    };
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+  }
+  showModal = () => {
+    this.setState({ show: true });
   };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+    
+  
   
   handleChange = (e) => {
     if (["projectName", "task", "taskNotes", "taskStatus"].includes(e.target.name)) {
@@ -65,7 +80,50 @@ clickOnDelete(record) {
            <th className="handle">Due date</th>
            <th className="handle">Priority</th>
            <th className="handle">MyStatus</th>
-           <th className="handle" > <button onClick={this.addNewColumn} id = "columnOptions">  + </button></th>
+           <th className="handle" > 
+           <button onMouseEnter={this.showModal} id = "columnOptions">  + </button>
+           
+<Modal isOpen={this.show} shouldCloseOnEsc={false} 
+shouldCloseOnOverlayClick={true} 
+onRequestClose={this.hideModal}
+style={{
+  overlay: {
+    position: 'fixed',
+    top: '40px',
+    left: '410px',
+    right: '750px',
+    bottom: '400px',
+    backgroundColor: 'grey',
+    padding:'10px',
+    margin:'10px'
+  },
+  content: {
+    position: 'absolute',
+    top: '10px',
+    left: '10px',
+    right: '10px',
+    bottom: '10px',
+    border: '1px solid #ccc',
+    background: '#fff',
+    overflow: 'auto',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '4px',
+    outline: 'none',
+    margin:'5px',
+    padding:'5px'
+  }
+}}>
+<div className="flex-container" style={{display:"flex",margin:'20px'}} >
+                    <option value="Status">Status</option>
+                    <option value="People">People</option>
+                    <option value="Timeline">Timeline</option>
+                    <option value="Date">Date</option>
+                    <option value="Tags">Tags</option>
+                    <option value="Number">Number</option>
+  </div>
+  
+</Modal>
+           </th>
          </tr>
          </thead>
          <tbody>
@@ -83,9 +141,7 @@ clickOnDelete(record) {
     );
   }
 }
- 
-// ReactDOM.render(<App/>, document.body);
-//   );
+
 
 
 export default App;
